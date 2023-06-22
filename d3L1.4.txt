@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int find_largest_number(int num) {
+    char num_str[5];
+    sprintf(num_str, "%d", num);
+    int largest_num = -1;
+
+    for (int i = 0; i < 4; i++) {
+        char new_num_str[4];
+        int idx = 0;
+
+        for (int j = 0; j < 4; j++) {
+            if (j != i) {
+                new_num_str[idx] = num_str[j];
+                idx++;
+            }
+        }
+        new_num_str[3] = '\0';
+
+        int new_num = atoi(new_num_str);
+
+        if (new_num > largest_num) {
+            largest_num = new_num;
+        }
+    }
+
+    return largest_num;
+}
+
+int main() {
+    int num;
+    printf("Enter a 4-digit number: ");
+    scanf("%d", &num);
+
+    int largest_number = find_largest_number(num);
+    printf("Largest number after deleting a single digit: %d\n", largest_number);
+
+    return 0;
+}

@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int calculateDifference(int arr[], int size) {
+    int sumEven = 0;
+    int sumOdd = 0;
+
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0) {
+            sumEven += arr[i];
+        } else {
+            sumOdd += arr[i];
+        }
+    }
+
+    return sumEven - sumOdd;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    int difference = calculateDifference(arr, size);
+
+    printf("Array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    printf("Difference between even and odd elements: %d\n", difference);
+
+    return 0;
+}

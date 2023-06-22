@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+float calculateSum(int arr[], int size) {
+    float sum = 0.0;
+
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+
+    return sum;
+}
+
+float calculateAverage(int arr[], int size) {
+    if (size == 0) {
+        return 0.0;
+    }
+
+    float sum = calculateSum(arr, size);
+    float average = sum / size;
+
+    return average;
+}
+
+int main() {
+    int arr[] = {5, 10, 15, 20, 25};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    float sum = calculateSum(arr, size);
+    float average = calculateAverage(arr, size);
+
+    printf("Array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    printf("Sum: %.2f\n", sum);
+    printf("Average: %.2f\n", average);
+
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+unsigned int setFirstBit(unsigned int num, int operationType) {
+    if (operationType == 1) {
+        num |= 1; 
+    }
+    return num;
+}
+
+int main() {
+    unsigned int num;
+    int operationType;
+    
+    printf("Enter a 32-bit integer: ");
+    scanf("%u", &num);
+    
+    printf("Enter the operation type (1 to set first bit): ");
+    scanf("%d", &operationType);
+    
+    unsigned int result = setFirstBit(num, operationType);
+    
+    printf("Result: %u\n", result);
+    
+    return 0;
+}

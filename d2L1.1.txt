@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdint.h>
+
+int main() {
+    double x = 0.7;
+    
+   
+    uint64_t* ptr = (uint64_t*)&x;
+    uint64_t bits = *ptr;
+    uint16_t exponent = (bits >> 52) & 0x7FF;
+
+   
+    printf("Exponent in hexadecimal: 0x%X\n", exponent);
+
+   
+    printf("Exponent in binary: ");
+    for (int i = 10; i >= 0; i--) {
+        printf("%d", (exponent >> i) & 1);
+    }
+    printf("\n");
+
+    return 0;
+}

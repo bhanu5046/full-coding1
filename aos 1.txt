@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    int rollno;
+    char name[20];
+    float marks;
+} Student;
+
+void parseString(const char* inputString, Student* students, int numStudents) {
+    char temp[20];
+    int count = 0;
+    int stringLength = strlen(inputString);
+
+    for (int i = 0; i < stringLength; i++) {
+        if (inputString[i] == ' ') {
+            temp[count] = '\0';
+            count = 0;
+
+            if (students != NULL) {
+                if (count == 0) {
+                    students->rollno = atoi(temp);
+                } else if (count == 1) {
+                    strcpy(students->name, temp);
+                } else if (count == 2) {
+                    students->marks = atof(temp);
+                }
+
+                students++;
+            }
+        } else {
+            temp[count++] = inputString[i];
+        }
+    }
+
+    if (count > 0 && students != NULL) {
+        temp[count] = '\0';
+
+        if (count == 1) {
+            students->rollno = atoi(temp);
+        } else if (count == 2) {
+            strcpy(students->name, temp);
+        } else if (count == 3) {
+            students->marks = atof(temp);
+        }
+    }
+}
+
+int main() {
+    const char* inputString = "1001 Aron 100.00";
+    Student students[1];
+
+    parseString(inputString, students, 1);
+
+    printf("Student Details:\n");
+    printf("Roll No: %d\n", students[0].rollno);
+    printf("Name: %s\n", students[0].name);
+    printf("Marks: %.2f\n", students[0].marks);
+
+    return 0;
+}
